@@ -134,6 +134,13 @@ data "oci_core_images" "deez" {
   }
 }
 
+data "template_file" "user_data" {
+    template = "${file("./user-data.yaml.tpl")}"
+    vars = {
+        doppler_token = var.DOPPLER_TOKEN
+    }
+}
+
 
 resource "oci_core_instance" "deez" {
   availability_domain = data.oci_identity_availability_domains.deez.availability_domains.0.name
@@ -145,6 +152,9 @@ resource "oci_core_instance" "deez" {
 
   metadata = {
     ssh_authorized_keys = var.SSH_KEY
+    user_data = base64encode(templatefile("./user-data.yaml.tpl", {
+        doppler_token = var.DOPPLER_TOKEN
+    }))
   }
 
   agent_config {
