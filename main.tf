@@ -170,7 +170,7 @@ resource "oci_core_instance" "deez" {
   create_vnic_details {
     assign_public_ip = false
     display_name     = "Ubuntu"
-    hostname_label   = "bgo1"
+    hostname_label   = "deez1"
     nsg_ids          = [oci_core_network_security_group.deez.id]
     subnet_id        = oci_core_subnet.deez.id
   }
