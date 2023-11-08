@@ -176,8 +176,8 @@ resource "oci_core_instance" "deez" {
   }
 
   shape_config {
-    memory_in_gbs = 8
-    ocpus         = 2
+    memory_in_gbs = 24
+    ocpus         = 4
   }
 
   source_details {
