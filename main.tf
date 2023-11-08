@@ -143,7 +143,7 @@ data "template_file" "user_data" {
 
 
 resource "oci_core_instance" "deez" {
-  availability_domain = data.oci_identity_availability_domains.deez.availability_domains.0.name
+  availability_domain = data.oci_identity_availability_domains.deez.availability_domains.1.name
   compartment_id      = oci_identity_compartment.deez.id
   shape               = local.shapes.flex
 
